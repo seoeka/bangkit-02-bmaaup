@@ -13,12 +13,10 @@ import com.seoeka.kamaikomiu.data.Location
 @Suppress("DEPRECATION")
 class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
-
     companion object {
         const val EXTRA_LOCATION = "extra_location"
     }
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -37,6 +35,7 @@ class DetailActivity : AppCompatActivity() {
                 tvLocName.text = locations.name
                 tvLocAdr.text= locations.address
                 tvLocOpen.text = locations.openingHours
+                tvLocRate.text = locations.rating
                 tvLocDesc.text = locations.desc
             }
         }
@@ -53,7 +52,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.ic_share){
+        if (item.itemId == R.id.share_page){
             val locations = intent.getParcelableExtra<Location>(EXTRA_LOCATION)
             val sendIntent:Intent = Intent().apply {
                 action = Intent.ACTION_SEND
