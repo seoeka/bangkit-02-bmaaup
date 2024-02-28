@@ -9,5 +9,6 @@ data class Location(
     val photo: String,
     val openingHours: String,
     val rating: String,
+    val gMaps: String,
     val desc: String,
 ) : Parcelable

@@ -4,6 +4,104 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="8dp"
     tools:context=".activities.DetailActivity">
+
+    <ImageView
+        android:id="@+id/img_loc"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:contentDescription="@string/img_loc"
+        android:elevation="8dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/backgrounds/scenic" />
+
+    <TextView
+        android:id="@+id/tv_loc_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:text="@string/loc_name"
+        style="@style/MarginDetail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_loc" />
+
+    <TextView
+        android:id="@+id/tv_loc_adr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:text="@string/detail_address"
+        style="@style/MarginDetail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_loc_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_loc_name" />
+
+    <View
+        android:id="@+id/view1"
+        style="@style/MarginDetail"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="#E7E7E7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_loc_adr" />
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_marginTop="8dp"
+        android:text="@string/open_hours"
+        style="@style/TextStyle"
+        app:layout_constraintStart_toStartOf="@+id/view1"
+        app:layout_constraintTop_toBottomOf="@+id/view1" />
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_marginTop="8dp"
+        android:text="@string/rating"
+        style="@style/TextStyle"
+        app:layout_constraintStart_toStartOf="@+id/tv1"
+        app:layout_constraintTop_toBottomOf="@+id/tv1" />
+
+    <TextView
+        android:id="@+id/tv_loc_open"
+        android:layout_marginStart="10dp"
+        android:text="@string/detail_open"
+        style="@style/TextStyle"
+        app:layout_constraintBottom_toBottomOf="@+id/tv1"
+        app:layout_constraintStart_toEndOf="@+id/tv1"
+        app:layout_constraintTop_toTopOf="@+id/tv1" />
+
+    <TextView
+        android:id="@+id/tv_loc_rate"
+        android:text="@string/detail_rating"
+        style="@style/TextStyle"
+        app:layout_constraintBottom_toBottomOf="@+id/tv2"
+        app:layout_constraintStart_toStartOf="@+id/tv_loc_open"
+        app:layout_constraintTop_toTopOf="@+id/tv2"/>
+
+    <TextView
+        android:id="@+id/tv3"
+        android:text="@string/desc"
+        android:layout_marginTop="16dp"
+        style="@style/TextStyle"
+        app:layout_constraintStart_toStartOf="@+id/tv2"
+        app:layout_constraintTop_toBottomOf="@+id/tv2" />
+
+    <TextView
+        android:id="@+id/tv_loc_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="fill_horizontal"
+        android:text="@string/detail_desc"
+        style="@style/MarginDetail"
+        app:layout_constraintStart_toStartOf="@+id/tv3"
+        app:layout_constraintTop_toBottomOf="@+id/tv3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,38 +1,39 @@
 package com.seoeka.kamaikomiu.activities
 
+import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.seoeka.kamaikomiu.data.Location
-import com.seoeka.kamaikomiu.R
-
+import com.seoeka.kamaikomiu.databinding.ListLocBinding
 
 class ListLocAdapter(private val listLoc: List<Location>) : RecyclerView.Adapter<ListLocAdapter.ListViewHolder>() {
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.list_loc, parent, false)
-        return ListViewHolder(view)
+        val binding = ListLocBinding.inflate(LayoutInflater.from(parent.context), parent, false) // Menggunakan ViewBinding
+        return ListViewHolder(binding)
     }
 
     override fun getItemCount(): Int = listLoc.size
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val (name, address, photo, openingHours, rating, desc) = listLoc[position]
-        Glide.with(holder.itemView.context)
-            .load(photo)
-            .into(holder.imgPhoto)
-        holder.tvName.text = name
-        holder.tvAddress.text = address
+        holder.bind(listLoc[position])
     }
 
-    class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val imgPhoto: ImageView = itemView.findViewById(R.id.img_loc)
-        val tvName: TextView = itemView.findViewById(R.id.tv_loc_name)
-        val tvAddress: TextView = itemView.findViewById(R.id.tv_loc_adr)
+    inner class ListViewHolder(private val binding: ListLocBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(location: Location) {
+            Glide.with(binding.root.context)
+                .load(location.photo)
+                .into(binding.imgLoc)
+            binding.tvLocName.text = location.name
+            binding.tvLocAdr.text = location.address
+
+            binding.root.setOnClickListener {
+                val intent = Intent(binding.root.context, DetailActivity::class.java)
+                intent.putExtra(DetailActivity.EXTRA_LOCATION, listLoc[adapterPosition])
+                binding.root.context.startActivity(intent)
+            }
+        }
     }
 
 }

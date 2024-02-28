@@ -2,27 +2,34 @@ package com.seoeka.kamaikomiu.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.GridLayoutManager
 import com.seoeka.kamaikomiu.data.LocationData
 import com.seoeka.kamaikomiu.R
+import com.seoeka.kamaikomiu.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var rvLocation: RecyclerView
-
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        rvLocation = findViewById(R.id.rv_tourist_attraction)
-        showRecyclerList()
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val actionbar = supportActionBar
+        actionbar!!.title = "KamaiKomiu"
+
+        val locAdapter = ListLocAdapter(LocationData.getLocationData())
+        val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(this, 2)
+        binding.rvTouristAttraction.layoutManager = layoutManager
+        with(binding){
+            rvTouristAttraction.adapter = locAdapter
+            rvTouristAttraction.setHasFixedSize(true)
+        }
     }
 
-    private fun showRecyclerList() {
-        val locData = LocationData.getLocationData()
-        val locAdapter = ListLocAdapter(locData)
-
-        rvLocation.adapter = locAdapter
-        rvLocation.layoutManager = GridLayoutManager(this, 2)
-        rvLocation.setHasFixedSize(true)
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.toolbar_main, menu)
+        return true
     }
 }
