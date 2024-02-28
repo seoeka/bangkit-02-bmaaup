@@ -1,4 +1,4 @@
-package com.seoeka.kamaikomiu
+package com.seoeka.kamaikomiu.activities
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.seoeka.kamaikomiu.data.Location
+import com.seoeka.kamaikomiu.R
 
 
 class ListLocAdapter(private val listLoc: List<Location>) : RecyclerView.Adapter<ListLocAdapter.ListViewHolder>() {

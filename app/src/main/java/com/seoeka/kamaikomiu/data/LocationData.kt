@@ -1,4 +1,4 @@
-package com.seoeka.kamaikomiu
+package com.seoeka.kamaikomiu.data
 
 object LocationData {
     fun getLocationData(): List<Location>{

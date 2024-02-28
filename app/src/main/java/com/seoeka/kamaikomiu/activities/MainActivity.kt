@@ -1,9 +1,11 @@
-package com.seoeka.kamaikomiu
+package com.seoeka.kamaikomiu.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.GridLayoutManager
+import com.seoeka.kamaikomiu.data.LocationData
+import com.seoeka.kamaikomiu.R
 
 class MainActivity : AppCompatActivity() {
     private lateinit var rvLocation: RecyclerView

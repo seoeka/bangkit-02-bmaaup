@@ -1,4 +1,4 @@
-package com.seoeka.kamaikomiu
+package com.seoeka.kamaikomiu.data
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
