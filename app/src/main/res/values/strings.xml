@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">KamaiKomiu</string>
+    <string name="rv_title">Daftar Tempat Wisata Sulawesi Tengah</string>
+    <string name="about">About</string>
 </resources>
