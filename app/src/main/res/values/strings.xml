@@ -19,4 +19,6 @@
 
     <string name="profile_name">Ekasari Amalia</string>
     <string name="profile_email">21106050023@student.uin-suka.ac.id</string>
+    <string name="about">Profil</string>
+    <string name="detail">Detail Lokasi</string>
 </resources>

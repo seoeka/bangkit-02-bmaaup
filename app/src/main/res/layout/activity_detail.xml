@@ -21,7 +21,7 @@
             android:layout_height="?attr/actionBarSize"
             android:minHeight="?attr/actionBarSize"
             app:navigationIconTint="?attr/colorOnSurface"
-            app:title="@string/app_name"
+            app:title="@string/detail"
             app:menu="@menu/toolbar_detail"
             app:navigationIcon="@drawable/ic_arrow_back_24"
             />
