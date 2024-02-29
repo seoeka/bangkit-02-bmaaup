@@ -1,18 +1,22 @@
 <resources>
-    <string name="app_name">KamaiKomiu</string>
+    <string name="app_name">Kamai Komiu</string>
     <string name="loc_name">Nama Lokasi</string>
 
     <string name="rv_title">Daftar Tempat Wisata Sulawesi Tengah</string>
     <string name="img_loc">Gambar Lokasi</string>
-    <string name="about">About</string>
+
     <string name="open_hours">Jam Buka :</string>
     <string name="rating">Nilai :</string>
-    <string name="detail_open">Buka 24 Jam</string>
     <string name="desc">Deskripsi</string>
+
+    <string name="detail_open">Buka 24 Jam</string>
     <string name="detail_desc">Deskripsi Lokasi</string>
     <string name="detail_address">Alamat</string>
     <string name="detail_rating">0.0 / 5.0</string>
+
+    <string name="ic_about">Profil</string>
     <string name="ic_share">Bagikan</string>
+
     <string name="profile_name">Ekasari Amalia</string>
     <string name="profile_email">21106050023@student.uin-suka.ac.id</string>
 </resources>
