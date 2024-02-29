@@ -21,9 +21,8 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val actionbar = supportActionBar
-        actionbar!!.title = "Detail Lokasi"
-        actionbar.setDisplayHomeAsUpEnabled(true)
+        setSupportActionBar(binding.topAppBar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val locations = intent.getParcelableExtra<Location>(EXTRA_LOCATION)
         if (locations != null){
@@ -41,28 +40,28 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
-    }
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.toolbar_detail, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.share_page){
-            val locations = intent.getParcelableExtra<Location>(EXTRA_LOCATION)
-            val sendIntent:Intent = Intent().apply {
-                action = Intent.ACTION_SEND
-                putExtra(Intent.EXTRA_TEXT, "Ayo jangan lupa berkunjung ke ${locations!!.name} kalau kamu ke ${locations.address}. ${locations.gMaps}")
-                type = "text/plain"
-
+        return when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                true
             }
-            startActivity(Intent.createChooser(sendIntent, "Bagikan"))
-            return true
+            R.id.action_share -> {
+                val locations = intent.getParcelableExtra<Location>(EXTRA_LOCATION)
+                val sendIntent: Intent = Intent().apply {
+                    action = Intent.ACTION_SEND
+                    putExtra(Intent.EXTRA_TEXT, "Ayo jangan lupa berkunjung ke ${locations!!.name} kalo ko pigi berkunjung ke ${locations.address}. ${locations.gMaps}")
+                    type = "text/plain"
+                }
+                startActivity(Intent.createChooser(sendIntent, "Bagikan"))
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
-        return super.onOptionsItemSelected(item)
     }
 }

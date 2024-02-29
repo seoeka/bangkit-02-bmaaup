@@ -1,11 +1,8 @@
 package com.seoeka.kamaikomiu.activities
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import com.seoeka.kamaikomiu.R
-import com.seoeka.kamaikomiu.data.Location
 import com.seoeka.kamaikomiu.databinding.ActivityAboutBinding
 
 class AboutActivity : AppCompatActivity() {
@@ -15,14 +12,18 @@ class AboutActivity : AppCompatActivity() {
         binding = ActivityAboutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val actionbar = supportActionBar
-        actionbar!!.title = "Profil"
-        actionbar.setDisplayHomeAsUpEnabled(true)
+        setSupportActionBar(binding.topAppBar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    @Suppress("DEPRECATION")
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                @Suppress("DEPRECATION")
+                onBackPressed()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

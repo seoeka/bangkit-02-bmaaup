@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.GridLayoutManager
 import com.seoeka.kamaikomiu.data.LocationData
 import com.seoeka.kamaikomiu.R
-import com.seoeka.kamaikomiu.data.Location
 import com.seoeka.kamaikomiu.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -18,17 +17,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val actionbar = supportActionBar
-        actionbar!!.title = "KamaiKomiu"
+        setSupportActionBar(binding.topAppBar)
 
         val locAdapter = ListLocAdapter(LocationData.getLocationData())
         val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(this, 2)
         binding.rvTouristAttraction.layoutManager = layoutManager
-        with(binding){
-            rvTouristAttraction.adapter = locAdapter
-            rvTouristAttraction.setHasFixedSize(true)
-        }
+        binding.rvTouristAttraction.adapter = locAdapter
+        binding.rvTouristAttraction.setHasFixedSize(true)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -37,10 +33,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.about_page){
-            val intent = Intent(this, AboutActivity::class.java)
-            startActivity(intent)
+        return when (item.itemId) {
+            R.id.about_page -> {
+                val intent = Intent(this, AboutActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
-        return super.onOptionsItemSelected(item)
     }
 }
